@@ -16,12 +16,14 @@ export type Scalars = {
 
 export type Author = {
   __typename?: 'Author';
+  id: Scalars['ID'];
   name: Scalars['String'];
   age: Scalars['Int'];
 };
 
 export type Book = {
   __typename?: 'Book';
+  id: Scalars['ID'];
   title: Scalars['String'];
   author: Author;
 };
@@ -33,10 +35,10 @@ export type Query = {
 
 export type BookCardFragment = (
   { __typename?: 'Book' }
-  & Pick<Book, 'title'>
+  & Pick<Book, 'id' | 'title'>
   & { author: (
     { __typename?: 'Author' }
-    & Pick<Author, 'name'>
+    & Pick<Author, 'id' | 'name'>
   ) }
 );
 
@@ -53,8 +55,10 @@ export type GetBooksQuery = (
 
 export const BookCardFragmentDoc = gql`
     fragment BookCard on Book {
+  id
   title
   author {
+    id
     name
   }
 }
