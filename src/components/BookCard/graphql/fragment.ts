@@ -1,0 +1,10 @@
+import { gql } from "@apollo/client";
+
+export const BOOK_CARD_FRAGMENT = gql`
+  fragment BookCard on Book {
+    title
+    author {
+      name
+    }
+  }
+`;
