@@ -16,14 +16,14 @@ export type Scalars = {
 
 export type Author = {
   __typename?: 'Author';
-  name?: Maybe<Scalars['String']>;
-  age?: Maybe<Scalars['Int']>;
+  name: Scalars['String'];
+  age: Scalars['Int'];
 };
 
 export type Book = {
   __typename?: 'Book';
-  title?: Maybe<Scalars['String']>;
-  author?: Maybe<Author>;
+  title: Scalars['String'];
+  author: Author;
 };
 
 export type Query = {
@@ -34,10 +34,10 @@ export type Query = {
 export type BookCardFragment = (
   { __typename?: 'Book' }
   & Pick<Book, 'title'>
-  & { author?: Maybe<(
+  & { author: (
     { __typename?: 'Author' }
     & Pick<Author, 'name'>
-  )> }
+  ) }
 );
 
 export type GetBooksQueryVariables = Exact<{ [key: string]: never; }>;
