@@ -7,21 +7,17 @@ const BookListPage: FC = () => {
   const { data, loading, error } = useGetBooksQuery();
 
   if (loading) return <p>...loading</p>;
-
   if (error) throw new Error(error.message);
-  if (!data?.books?.length) return <p>データがありません。</p>;
+  if (!data?.books) return <p>データがありません。</p>;
 
   return (
     <div className={styles.page}>
       <h1>本一覧</h1>
-      {data.books.map((book, idx) => {
-        if (book === null) throw new Error("本のデータがありません。");
-        return (
-          <div className={styles.cardWrapper}>
-            <BookCard book={book} key={idx} />
-          </div>
-        );
-      })}
+      {data.books.map((book) => (
+        <div className={styles.cardWrapper} key={book.id}>
+          <BookCard book={book} />
+        </div>
+      ))}
     </div>
   );
 };

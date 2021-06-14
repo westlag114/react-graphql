@@ -7,9 +7,9 @@ type Book {
 type Author {
   id: ID!
   name: String!
-  age: Int!
+  age: Int
 }
 
 type Query {
-  books: [Book]
+  books: [Book!]
 }

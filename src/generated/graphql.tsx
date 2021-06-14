@@ -18,7 +18,7 @@ export type Author = {
   __typename?: 'Author';
   id: Scalars['ID'];
   name: Scalars['String'];
-  age: Scalars['Int'];
+  age?: Maybe<Scalars['Int']>;
 };
 
 export type Book = {
@@ -30,7 +30,7 @@ export type Book = {
 
 export type Query = {
   __typename?: 'Query';
-  books?: Maybe<Array<Maybe<Book>>>;
+  books?: Maybe<Array<Book>>;
 };
 
 export type BookCardFragment = (
@@ -47,10 +47,10 @@ export type GetBooksQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetBooksQuery = (
   { __typename?: 'Query' }
-  & { books?: Maybe<Array<Maybe<(
+  & { books?: Maybe<Array<(
     { __typename?: 'Book' }
     & BookCardFragment
-  )>>> }
+  )>> }
 );
 
 export const BookCardFragmentDoc = gql`
